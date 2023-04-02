@@ -1,28 +1,32 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from sklearn.tree import DecisionTreeRegressor
-from sklearn.model_selection import train_test_split
+import pickle
 
-# Load the data
+# # Load the data
 data = pd.read_csv('merged_train_data.csv')
 
-# Split the data into features and target
+# # Split the data
 X = data.drop('sales', axis=1)
-y = data['sales']
 
-# Split the data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+# Load the model and encoder
+model = pickle.load(open("model.pkl", "rb"))
+encoder = pickle.load(open("encoder.pkl", "rb"))
 
-# Train the model
-model = DecisionTreeRegressor()
-model.fit(X_train, y_train)
+# Define the function to make predictions
+def predict_sales(input_data):
+    cols = ['family', 'city', 'state', 'cluster', 'type_y', 'type_x']
+    for col in cols:
+      input_data[col] = encoder.transform(input_data[col])
+    # use the reshape() method is used to convert it back to a 2D numpy array while doing prediction
+    prediction = model.predict(input_data.flatten().reshape(1, -1)) 
+    return prediction
 
 # Create the app
 st.title('Sales Prediction App')
 
 # Add inputs for the user to enter the values
-store_nbr = st.number_input('Store Number')
+store_nbr = st.number_input('Store Number', min_value=1, max_value=54)
 family = st.selectbox('Family', list(X['family'].unique()))
 onpromotion = st.selectbox('On Promotion', ['True', 'False'])
 city = st.selectbox('City', list(X['city'].unique()))
@@ -51,6 +55,7 @@ earthquake_impact = st.selectbox('Earthquake Impact', ['True', 'False'])
 
 # When the 'Predict' button is clicked, make the prediction and display it
 if st.button('Predict'):
-    input_data = np.array([[store_nbr, family, onpromotion, city, state, type_x, cluster, oil_price, type_y, month, day_of_month, day_of_year, week_of_year, day_of_week, year, is_weekend, is_month_start, quarter, is_month_end, is_quarter_start, is_quarter_end, is_year_start, is_year_end, season, pay_day, earthquake_impact]])
-    prediction = model.predict(input_data)
+    # input_data = np.array([[store_nbr, family, onpromotion, city, state, type_x, cluster, oil_price, type_y, month, day_of_month, day_of_year, week_of_year, day_of_week, year, is_weekend, is_month_start, quarter, is_month_end, is_quarter_start, is_quarter_end, is_year_start, is_year_end, season, pay_day, earthquake_impact]])
+    input_data = np.array([store_nbr, family, onpromotion, city, state, type_x, cluster, oil_price, type_y, month, day_of_month, day_of_year, week_of_year, day_of_week, year, is_weekend, is_month_start, quarter, is_month_end, is_quarter_start, is_quarter_end, is_year_start, is_year_end, season, pay_day, earthquake_impact])
+    prediction = predict_sales(input_data)
     st.write('The predicted sales amount is:', prediction)
