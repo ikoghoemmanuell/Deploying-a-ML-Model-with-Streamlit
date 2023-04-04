@@ -1,8 +1,18 @@
-# make this streamlit sales prediction app look more beautiful by adding a background and other styles:
 import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
+
+# Create the app
+st.set_page_config(page_title='Sales Prediction App', page_icon=':bar_chart:', layout='wide')
+st.title('Sales Prediction App')
+
+# Import the image
+from PIL import Image
+image = Image.open('beautiful_picture.jpg')
+
+# Show the image
+st.image(image, caption='A beautiful picture', use_column_width=True)
 
 # Load the data
 data = pd.read_csv('merged_train_data.csv')
@@ -32,9 +42,6 @@ def predict_sales(input_data, input_df):
     prediction = model.predict(input_data.flatten().reshape(1, -1))
     return prediction
 
-# Create the app
-st.set_page_config(page_title='Sales Prediction App', page_icon=':bar_chart:', layout='wide')
-st.title('Sales Prediction App')
 
 # introduction
 st.write("""
