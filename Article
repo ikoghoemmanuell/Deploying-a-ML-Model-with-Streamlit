@@ -1,0 +1,58 @@
+Deploying a Machine Learning Model with Streamlit
+
+source: https://i.ytimg.com/vi/Klqn--Mu2pE/maxresdefault.jpg
+Introduction
+Streamlit is an open-source tool to build and deploy data applications with less coding compared to other technologies like HTML, CSS, and JavaScript. It is a low-code tool specifically designed for building data science applications. It has the functionality to deploy apps on the streamlit community cloud and manage apps without hassle, all at no cost.
+
+Moreover, Streamlit has component-based functionality to develop data applications with minimal code, and options to connect with many data sources, like AWS S3, spreadsheets, BigQuery, PostgresSQL, MS SQL Server, Spreadsheets, etc.
+
+Why Streamlit?
+It can be used to turn data science projects into web applications. For example, we want to run a prediction model. We wrote all the AI ​​code, but it still has processes such as deployment and API. With Streamlit you can make this easy at the “predict button press” level. If we think of the .py code we wrote as a backend, streamlit gives us the opportunity to make the frontend of it.
+We can make data visualization dashboards. Wouldn’t it be nice to create your own BI tool this way?
+Streamlit is not limited to AI, ML, DL models. Let’s say we do a simple EDA and find some notable insights. Now is the time to explain this to steakholders, but our workspace is code hell. Here it is also allowing us to show our non-technical colleagues the final output in an understandable way.
+Other than that, it’s up to the imagination, in short, anything done with Python can be done as a dynamic web page.
+Steps:
+Set up environment
+Import Model, Scaler and Encoder
+Develop and build the interface with the source code
+Model Deployment
+Conclusion
+
+1. Set up environment
+   This step involves creating the folder or repository for your app. You may want to create a resources folder to hold the items you have exported from your notebook. The requirements file should be at the root of your repository or main folder.
+
+To prevent any conflicts with your variables, you may use the following code to create a virtual environment, activate it in your terminal, and install the requirements in your requirements file:
+
+2. Import Model, Scaler and Encoder
+   Now switch to the workspace of the virtual environment. It is active when you have (venv) preceding the path to your current working directory in the terminal.
+
+Next is to define a function to load your items. In my case, I used the code below which has a default value for the file path:
+
+Exporting scaler and encoder using pickle
+
+Exporting our trained model 3. Develop and build the interface with the source code
+Before you start with the interface,we imported the libraries and load the data sets using cache_resources
+
+Loading the original dataset
+
+Loading the model,encoder and scaler
+From there you build your interface using the components provided by Streamlit. The most common ones you’re most likely going to use are:
+
+st.container(): to define a container (read box) to keep other components and keep your work organized
+st.columns(n): to define columns in your workspace. Replace n with the number of columns you want to create
+st.sidebar: for a sidebar
+st.date_input(): to receive date inputs
+st.selectbox(): for a dropdown box
+st.number_input(): for number inputs
+st.radio(): for a radio
+st.checkbox(): for a checkbox
+st.expander(): for an expander
+st.form(): to create a form to receive inputs from users
+
+The interface was structured with the above features
+
+Prediction results 4. Model Deployment
+To deploy, visit https://streamlit.io/cloud, sign in and connect your GitHub (if you haven’t). You can then select new app and the repo of the app for deployment.
+
+5. Conclusion
+   In this article, we learned a complete guide to developing an app using the streamlit library as well as building and deploying web applications using the streamlit community cloud for free. Click below to see all my code.
