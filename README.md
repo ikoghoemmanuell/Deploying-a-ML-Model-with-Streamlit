@@ -1,12 +1,12 @@
+# Building and Deploying a Machine Learning Model with Streamlit
+
 [![View My Profile](https://img.shields.io/badge/View-My_Profile-green?logo=GitHub)](https://github.com/ikoghoemmanuell)
 [![View Repositories](https://img.shields.io/badge/View-My_Repositories-blue?logo=GitHub)](https://github.com/ikoghoemmanuell?tab=repositories)
 [![View My Profile](https://img.shields.io/badge/MEDIUM-Article-purple?logo=Medium)](https://medium.com/p/76d51b8d6e05/edit)
 
-# Building and Deploying a Machine Learning Model with Streamlit
+<img src="https://i.ytimg.com/vi/Klqn--Mu2pE/maxresdefault.jpg" width="150">
 
 ## Introduction
-
-<img src="https://i.ytimg.com/vi/Klqn--Mu2pE/maxresdefault.jpg" width="150">
 
 We will go through the process of building and deploying a machine learning model using Streamlit. Streamlit is an open-source Python library that enables you to quickly create custom interfaces for your machine learning models, allowing you to deploy them without needing to build a complete web application.
 
