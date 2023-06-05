@@ -57,6 +57,9 @@ We will use the Streamlit library to create the app. The app will have input com
 
 # 🚀 Execution
 
+**NOTE**: You must download **model.pkl** and **merged_train_data** from [`here`](https://huggingface.co/spaces/ikoghoemmanuell/Sales-Prediction-App-Streamlit/tree/main) (files too large for github) 
+and also move **scaler.pkl** and **encoder.pkl** to the root folder before running the app. 
+
 To Run the app: Go to your terminal and type:
 
 ```python
