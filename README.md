@@ -11,15 +11,6 @@
 
 We will go through the process of building and deploying a machine learning model using Streamlit. Streamlit is an open-source Python library that enables you to quickly create custom interfaces for your machine learning models, allowing you to deploy them without needing to build a complete web application.
 
-## 🛠️ Requirements
-
-```python
-numpy
-pandas
-sklearn
-streamlit
-```
-
 # 📁 Dataset
 
 Public dataset can be found [`here`](https://github.com/Azubi-Africa/Career_Accelerator_LP2-Regression/blob/main/store-sales-time-series-forecasting.zip)
